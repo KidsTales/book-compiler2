@@ -1,0 +1,35 @@
+{
+  "name": "book-compiler2",
+  "version": "0.0.1",
+  "description": "Website to generate .docx for KidsTales workshops.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nf start",
+    "dev": "NODE_ENV=development nf start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KidsTales/book-compiler2.git"
+  },
+  "author": "Frank Matranga",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KidsTales/book-compiler2/issues"
+  },
+  "homepage": "https://github.com/KidsTales/book-compiler2#readme",
+  "dependencies": {
+    "foreman": "^3.0.0",
+    "koa": "^2.5.1",
+    "koa-body": "^4.0.1",
+    "koa-helmet": "^4.0.0",
+    "koa-logger": "^3.2.0",
+    "koa-respond": "^1.0.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.3",
+    "koa-views": "^6.1.4",
+    "kompression": "^1.0.0",
+    "moment": "^2.22.2",
+    "pug": "^2.0.3"
+  }
+}
