@@ -1,6 +1,8 @@
 const Router = require('koa-router');
 const router = new Router();
 
+const docxtemplater = require('../docxtemplater');
+
 // GET /generator
 router.get('/', async ctx => {
   await ctx.render('generator');
@@ -8,7 +10,26 @@ router.get('/', async ctx => {
 
 router.post('/', async ctx => {
   const body = ctx.request.body;
-  const files = ctx.request.files;
+  let files = ctx.request.files;
+
+  for (let file in files) {
+    if (file === 'student-image') {
+      files[file] = files[file].map(f => f.path);
+    } else {
+      files[file] = files[file].path;
+    }
+  }
+
+  //files = files.map(f => f.path);
+
+  /*
+  console.log(body);
+  console.log(files);
+  */
+
+  ['teacher', 'student-name', 'student-bio', 'student-story-title', 'student-story-content'].forEach(key => {
+    if (body[key].constructor !== Array) body[key] = [body[key]];
+  })
 
   console.log(body);
   console.log(files);
@@ -32,11 +53,13 @@ router.post('/', async ctx => {
     })),
     stories: body['student-story-title'].map((title, index) => Object.assign({}, {
       title,
+      author: body['student-name'][index],
       content: body['student-story-content'][index]
     }))
   }
 
-  ctx.body = data;
+  console.log(data);
+  ctx.body = docxtemplater(data);
 });
 
 
