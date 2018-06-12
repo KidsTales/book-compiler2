@@ -22,7 +22,7 @@ block content
         .field
           label.label(for="book-cover") Book Cover
           .control
-            input.input#book-cover(name="book-cover", type="file", accept="image/*", required)
+            input.input#book-cover(name="book-cover", type="file", accept="image/*", @change="changeCoverImage", required)
         hr
 
         h2.subtitle Location
@@ -39,15 +39,18 @@ block content
         .field
           label.label(for="location-image") Location Image
           .control
-            input.input#location-image(name="location-image", type="file", accept="image/*", required)
+            input.input#location-image(name="location-image", type="file", accept="image/*", @change="changeLocationImage", required)
         hr
 
         h2.subtitle Workshop
         .field
           label.label(for="add-teacher") Teachers
           .control
-            input.input#add-teacher(name="add-teacher", type="text", placeholder="Add Teacher", v-model.trim="new_teacher", @keyup.enter="addTeacher", required)
-            button.button.is-success(type="button", @click="addTeacher") Add
+            .columns
+              .column
+                input.input#add-teacher(name="add-teacher", type="text", placeholder="Add Teacher", v-model.trim="new_teacher", required)
+              .column.is-narrow
+                button.button.is-success(type="button", @click="addTeacher") Add
         .teachers
           .box.teacher(v-for="(t, index) in teachers")
             span.remove-teacher.is-pulled-right(@click="removeTeacher(index)") ❌
@@ -56,8 +59,11 @@ block content
         .field
           label.label(for="add-student") Students
           .control
-            input.input#add-student(name="add-student", type="text", placeholder="Add Student", v-model.trim="new_student", @keyup.enter="addStudent", required)
-            button.button.is-success(type="button", @click="addStudent") Add
+            .columns
+              .column
+                input.input#add-student(name="add-student", type="text", placeholder="Add Student", v-model.trim="new_student", required)
+              .column.is-narrow
+                button.button.is-success(type="button", @click="addStudent") Add
         .students
           .box.student(v-for="(s, index) in students")
             span.remove-student.is-pulled-right(@click="removeStudent(index)") ❌
@@ -71,7 +77,7 @@ block content
             .field
               label.label(:for="'student-' + index + '-image'") Image
               .control
-                input.input(:id="'student-' + index + '-image'", :name="'student-' + index + '-image'", type="file", accept="image/*", required)
+                input.input(:id="'student-' + index + '-image'", :name="'student-' + index + '-image'", type="file", accept="image/*", @change="changeStudentImage($event, index)", required)
             hr
 
             .field
