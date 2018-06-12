@@ -1,0 +1,12 @@
+.remove-teacher,
+.remove-student {
+  cursor: pointer;
+}
+
+.teacher:not(:last-of-type) {
+  margin-bottom: 1em;
+}
+
+.teacher:last-of-type {
+  margin-bottom: 1.5em;
+}

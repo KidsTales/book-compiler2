@@ -48,8 +48,10 @@ block content
           .control
             input.input#add-teacher(name="add-teacher", type="new_teacher", placeholder="Add Teacher", v-model.trim="new_teacher", @keyup.enter="addTeacher", required)
             button.button.is-success(type="button", @click="addTeacher") Add
-          ol
-            li(v-for="t in teachers") {{ t }}
+        .teachers
+          .box.teacher(v-for="(t, index) in teachers")
+            span.remove-teacher.is-pulled-right(@click="removeTeacher(index)") ❌
+            h1.subtitle {{ t }}
 
         .field
           label.label(for="add-student") Students
@@ -57,7 +59,8 @@ block content
             input.input#add-student(name="add-student", type="text", placeholder="Add Student", v-model.trim="new_student", @keyup.enter="addStudent", required)
             button.button.is-success(type="button", @click="addStudent") Add
         .students
-          .box.student(v-for="s in students")
+          .box.student(v-for="(s, index) in students")
+            span.remove-student.is-pulled-right(@click="removeStudent(index)") ❌
             h1.subtitle {{ s.name }}
         hr
         button.button.is-danger.is-large Generate

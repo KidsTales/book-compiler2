@@ -23,6 +23,10 @@ const generator_app = new Vue({
       this.teachers.push(this.new_teacher);
       this.new_teacher = '';
     },
+    removeTeacher: function (index) {
+      if (!confirm(`Are you sure you want to remove teacher ${this.teachers[index]}?`)) return;
+      this.teachers.splice(index, 1);
+    },
     addStudent: function (event) {
       if (this.new_student.length === 0) return;
       this.students.push({
@@ -33,6 +37,10 @@ const generator_app = new Vue({
         }
       });
       this.new_student = '';
+    },
+    removeStudent: function (index) {
+      if (!confirm(`Are you sure you want to remove student ${this.students[index].name}?`)) return;
+      this.students.splice(index, 1);
     }
   },
   computed: {
