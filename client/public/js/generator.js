@@ -52,9 +52,9 @@ const generator_app = new Vue({
     },
     changeStudentImage: function (event, index) {
       this.students[index].image = event.target.files[0];
-    }
-  },
-  computed: {
+    },
+    submit: function (event) {
 
+    }
   }
 });

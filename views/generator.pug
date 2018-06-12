@@ -7,17 +7,17 @@ block content
     .container
       h1.title New Document
 
-      form.book-form
+      form.book-form(enctype="multipart/form-data", method="POST")
         h2.subtitle Book
         .field
           label.label(for="book-title") Book Title
           .control
-            input.input#book-title(type="book-title", v-model="book.title", required)
+            input.input#book-title(name="book-title", type="book-title", v-model="book.title", required)
         
         .field
           label.label(for="book-introduction") Book Introduction
           .control
-            textarea.input#book-introduction(type="book-introduction", v-model="book.introduction", required)
+            textarea.input#book-introduction(name="book-introduction", type="book-introduction", v-model="book.introduction", required)
         
         .field
           label.label(for="book-cover") Book Cover
@@ -48,47 +48,57 @@ block content
           .control
             .columns
               .column
-                input.input#add-teacher(name="add-teacher", type="text", placeholder="Add Teacher", v-model.trim="new_teacher", required)
+                input.input#add-teacher(type="text", placeholder="Add Teacher", v-model.trim="new_teacher")
               .column.is-narrow
                 button.button.is-success(type="button", @click="addTeacher") Add
         .teachers
           .box.teacher(v-for="(t, index) in teachers")
             span.remove-teacher.is-pulled-right(@click="removeTeacher(index)") ❌
-            h1.subtitle {{ t }}
+            h1.title Teacher {{ index + 1}}
+            .field
+              label.label(:for="'teacher-' + index") Teacher Name
+              .control
+                input.input(:id="'teacher-' + index", name="teacher", type="text", v-model="teachers[index]", required)
+
 
         .field
           label.label(for="add-student") Students
           .control
             .columns
               .column
-                input.input#add-student(name="add-student", type="text", placeholder="Add Student", v-model.trim="new_student", required)
+                input.input#add-student(type="text", placeholder="Add Student", v-model.trim="new_student")
               .column.is-narrow
                 button.button.is-success(type="button", @click="addStudent") Add
         .students
           .box.student(v-for="(s, index) in students")
             span.remove-student.is-pulled-right(@click="removeStudent(index)") ❌
-            h1.subtitle {{ s.name }}
+
+            h1.title Student {{ index + 1 }}
+            .field
+              label.label(:for="'student-' + index + '-name'") Student Name
+              .control
+                input.input(:id="'student-' + index + '-name'", name="student-name", type="text", v-model="students[index].name", required)
 
             .field
               label.label(:for="'student-' + index + '-bio'") Bio
               .control
-                textarea.input(:id="'student-' + index + '-bio'", :name="'student-' + index + '-bio'", type="text", v-model="students[index].bio", :placeholder="students[index].name + '\\'s biography'", required)
+                textarea.input(:id="'student-' + index + '-bio'", name="student-bio", type="text", v-model="students[index].bio", :placeholder="students[index].name + '\\'s biography'", required)
             
             .field
               label.label(:for="'student-' + index + '-image'") Image
               .control
-                input.input(:id="'student-' + index + '-image'", :name="'student-' + index + '-image'", type="file", accept="image/*", @change="changeStudentImage($event, index)", required)
+                input.input(:id="'student-' + index + '-image'", name="student-image", type="file", accept="image/*", @change="changeStudentImage($event, index)", required)
             hr
 
             .field
               label.label(:for="'student-' + index + '-story-title'") Story Title
               .control
-                input.input(:id="'student-' + index + '-story-title'", :name="'student-' + index + '-story-title'", type="text", v-model="students[index].story.title", required)
+                input.input(:id="'student-' + index + '-story-title'", name="student-story-title", type="text", v-model="students[index].story.title", required)
             
             .field
               label.label(:for="'student-' + index + '-story-content'") Story Content
               .control
-                textarea.input(:id="'student-' + index + '-story-content'", :name="'student-' + index + '-story-content'", v-model="students[index].story.content", required)
-            
+                textarea.input(:id="'student-' + index + '-story-content'", name="student-story-content", v-model="students[index].story.content", required)
+
         hr
         button.button.is-danger.is-large Generate
