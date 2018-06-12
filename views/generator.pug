@@ -1,6 +1,62 @@
 extends /layout
 
 block content
+  script(src="/js/generator.js", defer)
+
   section.section#generator
     .container
       h1.title New Document
+
+      form.book-form
+        h2.subtitle Book
+        .field
+          label.label(for="book-title") Book Title
+          .control
+            input.input#book-title(type="book-title", v-model="book.title", required)
+        
+        .field
+          label.label(for="book-introduction") Book Introduction
+          .control
+            textarea.input#book-introduction(type="book-introduction", v-model="book.introduction", required)
+        
+        .field
+          label.label(for="book-cover") Book Cover
+          .control
+            input.input#book-cover(name="book-cover", type="file", accept="image/*", required)
+        hr
+
+        h2.subtitle Location
+        .field
+          label.label(for="location-name") Location
+          .control
+            input.input#location-name(name="location-name", type="location-name", v-model="location.name", required)
+        
+        .field
+          label.label(for="location-description") Location Description
+          .control
+            textarea.input#location-description(name="location-description", type="location-description", v-model="location.description", required)
+        
+        .field
+          label.label(for="location-image") Location Image
+          .control
+            input.input#location-image(name="location-image", type="file", accept="image/*", required)
+        hr
+
+        h2.subtitle Workshop
+        .field
+          label.label(for="add-teacher") Teachers
+          .control
+            input.input#add-teacher(name="add-teacher", type="new_teacher", placeholder="Add Teacher", v-model="new_teacher", required)
+          ol
+            li(v-for="t in teachers") {{ t }}
+
+        .field
+          label.label(for="add-student") Students
+          .control
+            input.input#add-student(name="add-student", type="text", placeholder="Add Student", v-model="new_student", required)
+
+        .students
+          .student(v-for="s in students")
+
+        hr
+        button.button.is-danger.is-large Generate
