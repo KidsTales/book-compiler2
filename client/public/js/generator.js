@@ -15,7 +15,8 @@ const generator_app = new Vue({
       image: null
     },
     teachers: [],
-    students: []
+    students: [],
+    stories: []
   },
   methods: {
     changeCoverImage: function (event) {
@@ -38,11 +39,11 @@ const generator_app = new Vue({
       this.students.push({
         name: this.new_student,
         bio: '',
-        image: null,
-        story: {
-          title: '',
-          content: ''
-        }
+        image: null
+      });
+      this.stories.push({
+        title: '',
+        content: ''
       });
       this.new_student = '';
     },

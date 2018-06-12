@@ -93,12 +93,12 @@ block content
             .field
               label.label(:for="'student-' + index + '-story-title'") Story Title
               .control
-                input.input(:id="'student-' + index + '-story-title'", name="student-story-title", type="text", v-model.trim="students[index].story.title", required)
+                input.input(:id="'student-' + index + '-story-title'", name="student-story-title", type="text", v-model.trim="stories[index].title", required)
             
             .field
               label.label(:for="'student-' + index + '-story-content'") Story Content
               .control
-                textarea.input(:id="'student-' + index + '-story-content'", name="student-story-content", v-model.trim="students[index].story.content", required)
+                textarea.input(:id="'student-' + index + '-story-content'", name="student-story-content", v-model.trim="stories[index].content", required)
 
         hr
         button.button.is-danger.is-large Generate
