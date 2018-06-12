@@ -67,3 +67,5 @@ typings/
 .serverless
 log.txt
 download.docx
+
+*.docx#
