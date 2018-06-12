@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/KidsTales/book-compiler2#readme",
   "dependencies": {
+    "docxtemplater": "^3.6.6",
     "foreman": "^3.0.0",
+    "jszip": "^2.6.1",
     "koa": "^2.5.1",
     "koa-body": "^4.0.1",
     "koa-helmet": "^4.0.0",
