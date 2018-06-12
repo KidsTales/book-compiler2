@@ -54,7 +54,8 @@ const generator_app = new Vue({
       this.students[index].image = event.target.files[0];
     },
     submit: function (event) {
-
+      if (this.students.length === 0 || this.teachers.length === 0)
+        return event.preventDefault();
     }
   }
 });
