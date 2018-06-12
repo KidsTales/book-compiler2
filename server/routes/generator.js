@@ -20,13 +20,6 @@ router.post('/', async ctx => {
     }
   }
 
-  //files = files.map(f => f.path);
-
-  /*
-  console.log(body);
-  console.log(files);
-  */
-
   ['teacher', 'student-name', 'student-bio', 'student-story-title', 'student-story-content'].forEach(key => {
     if (body[key].constructor !== Array) body[key] = [body[key]];
   })
