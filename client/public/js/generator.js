@@ -32,8 +32,10 @@ const generator_app = new Vue({
       this.students.push({
         name: this.new_student,
         bio: '',
+        image: null,
         story: {
-
+          title: '',
+          content: ''
         }
       });
       this.new_student = '';

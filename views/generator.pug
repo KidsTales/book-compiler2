@@ -46,7 +46,7 @@ block content
         .field
           label.label(for="add-teacher") Teachers
           .control
-            input.input#add-teacher(name="add-teacher", type="new_teacher", placeholder="Add Teacher", v-model.trim="new_teacher", @keyup.enter="addTeacher", required)
+            input.input#add-teacher(name="add-teacher", type="text", placeholder="Add Teacher", v-model.trim="new_teacher", @keyup.enter="addTeacher", required)
             button.button.is-success(type="button", @click="addTeacher") Add
         .teachers
           .box.teacher(v-for="(t, index) in teachers")
@@ -62,5 +62,27 @@ block content
           .box.student(v-for="(s, index) in students")
             span.remove-student.is-pulled-right(@click="removeStudent(index)") ❌
             h1.subtitle {{ s.name }}
+
+            .field
+              label.label(:for="'student-' + index + '-bio'") Bio
+              .control
+                textarea.input(:id="'student-' + index + '-bio'", :name="'student-' + index + '-bio'", type="text", v-model="students[index].bio", :placeholder="students[index].name + '\\'s biography'", required)
+            
+            .field
+              label.label(:for="'student-' + index + '-image'") Image
+              .control
+                input.input(:id="'student-' + index + '-image'", :name="'student-' + index + '-image'", type="file", accept="image/*", required)
+            hr
+
+            .field
+              label.label(:for="'student-' + index + '-story-title'") Story Title
+              .control
+                input.input(:id="'student-' + index + '-story-title'", :name="'student-' + index + '-story-title'", type="text", v-model="students[index].story.title", required)
+            
+            .field
+              label.label(:for="'student-' + index + '-story-content'") Story Content
+              .control
+                textarea.input(:id="'student-' + index + '-story-content'", :name="'student-' + index + '-story-content'", v-model="students[index].story.content", required)
+            
         hr
         button.button.is-danger.is-large Generate
