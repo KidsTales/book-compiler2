@@ -41,7 +41,7 @@ router.post('/', async ctx => {
     location: {
       name: body['location-name'],
       description: body['location-description'],
-      image: files['location-image']
+      locationImage: files['location-image']
     },
     teachers: body['teacher'],
     students: body['student-name'].map((name, index) => Object.assign({}, {

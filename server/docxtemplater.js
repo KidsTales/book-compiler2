@@ -7,15 +7,23 @@ const ImageModule = require('docxtemplater-image-module');
 
 const sizeOf = require('image-size');
 
+const sizings = {
+  locationImage: 400,
+  image: 200
+};
+
 const opts = {
   centered: true,
   getImage: function (tagValue, tagName) {
     return fs.readFileSync(tagValue);
   },
-  getSize: function (img) {
-    sizeObj = sizeOf(img);
-    console.log(sizeObj);
-    return [sizeObj.width, sizeObj.height];
+  getSize: function (img, tagValue, tagName) {
+    size = sizeOf(img);
+    if (tagName in sizings) {
+      const new_height = (sizings[tagName] * size.height) / size.width;
+      return [sizings[tagName], new_height];
+    }
+    return [size.width, size.height];
   }
 }
 
