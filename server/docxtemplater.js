@@ -27,7 +27,7 @@ module.exports = data => {
 
   // Fill data
   data.year = new Date().getFullYear();
-  data.book.subtitle = 'An Anthology of Stories';
+  data.book.subtitle = 'An Anthology of Short Stories';
   data.book.isbn13 = '[INSERT HERE]'
   data.book.isbn10 = '[INSERT HERE]';
   data.teacherList = data.teachers.join(', ');

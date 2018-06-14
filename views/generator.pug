@@ -20,11 +20,11 @@ block content
             textarea.input#book-introduction(name="book-introduction", type="book-introduction", v-model.trim="book.introduction", required)
         
         .field
-          label.label(for="book-cover") Book Cover
+          label.label(for="book-cover") Book Cover Art
           .control
             input.input#book-cover(name="book-cover", type="file", accept="image/*", @change="changeCoverImage", required)
         .field
-          label.label(for="book-back") Back Cover
+          label.label(for="book-back") Back Cover Art
           .control
             input.input#book-back(name="book-back", type="file", accept="image/*", @change="changeBackImage", required)
         hr
