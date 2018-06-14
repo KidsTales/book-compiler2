@@ -7,7 +7,8 @@ const generator_app = new Vue({
     book: {
       title: 'Test',
       introduction: '',
-      coverImage: null
+      coverImage: null,
+      backImage: null
     },
     location: {
       name: '',
@@ -21,6 +22,9 @@ const generator_app = new Vue({
   methods: {
     changeCoverImage: function (event) {
       this.book.coverImage = event.target.files[0];
+    },
+    changeBackImage: function (event) {
+      this.book.backImage = event.target.files[0];
     },
     changeLocationImage: function (event) {
       this.location.image = event.target.files[0];

@@ -23,6 +23,10 @@ block content
           label.label(for="book-cover") Book Cover
           .control
             input.input#book-cover(name="book-cover", type="file", accept="image/*", @change="changeCoverImage", required)
+        .field
+          label.label(for="book-back") Back Cover
+          .control
+            input.input#book-back(name="book-back", type="file", accept="image/*", @change="changeBackImage", required)
         hr
 
         h2.subtitle Location

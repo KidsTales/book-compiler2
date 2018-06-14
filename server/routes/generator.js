@@ -22,7 +22,11 @@ router.post('/', async ctx => {
 
   ['teacher', 'student-name', 'student-bio', 'student-story-title', 'student-story-content'].forEach(key => {
     if (body[key].constructor !== Array) body[key] = [body[key]];
-  })
+  });
+
+  ['student-image'].forEach(key => {
+    if (files[key].constructor !== Array) files[key] = [files[key]];
+  });
 
   console.log(body);
   console.log(files);
@@ -31,7 +35,8 @@ router.post('/', async ctx => {
     book: {
       title: body['book-title'],
       introduction: body['book-introduction'],
-      coverImage: files['book-cover']
+      coverImage: files['book-cover'],
+      backImage: files['book-back']
     },
     location: {
       name: body['location-name'],
