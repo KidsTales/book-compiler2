@@ -57,6 +57,7 @@ router.post('/', async ctx => {
   }
 
   console.log(data);
+  ctx.set('Content-disposition', `attachment; filename=${data.book.title}.docx`)
   ctx.body = docxtemplater(data);
 });
 
