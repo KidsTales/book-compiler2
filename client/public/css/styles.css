@@ -3,12 +3,16 @@
   cursor: pointer;
 }
 
-.teacher:not(:last-of-type) {
-  margin-bottom: 1em;
-}
-
 .teacher:last-of-type {
   margin-bottom: 1.5em;
+}
+
+.teacher.column.is-half .control {
+  display: inline;
+}
+
+.teacher.column.is-half input {
+  width: fit-content;
 }
 
 #generator textarea {

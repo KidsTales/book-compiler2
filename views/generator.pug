@@ -55,14 +55,19 @@ block content
                 input.input#add-teacher(type="text", placeholder="Add Teacher", v-model.trim="new_teacher")
               .column.is-narrow
                 button.button.is-success(type="button", @click="addTeacher") Add
-        .teachers
-          .box.teacher(v-for="(t, index) in teachers")
-            span.remove-teacher.is-pulled-right(@click="removeTeacher(index)") ❌
-            h1.title Teacher {{ index + 1}}
-            .field
-              label.label(:for="'teacher-' + index") Teacher Name
-              .control
-                input.input(:id="'teacher-' + index", name="teacher", type="text", v-model.trim="teachers[index]", required)
+        .teachers.columns.is-multiline
+          .teacher.column.is-half(v-for="(t, index) in teachers")
+            .control
+              input.input(:id="'teacher-' + index", placeholder="Teacher Name", name="teacher", type="text", v-model.trim="teachers[index]", required)
+              button.button.is-warning(type="button", @click="removeTeacher(index)") X
+          
+          //- .box.teacher(v-for="(t, index) in teachers")
+          //-   span.remove-teacher.is-pulled-right(@click="removeTeacher(index)") ❌
+          //-   h1.title Teacher {{ index + 1}}
+          //-   .field
+          //-     label.label(:for="'teacher-' + index") Teacher Name
+          //-     .control
+          //-       input.input(:id="'teacher-' + index", name="teacher", type="text", v-model.trim="teachers[index]", required)
 
 
         .field
