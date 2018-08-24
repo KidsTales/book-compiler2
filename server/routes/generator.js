@@ -12,7 +12,8 @@ router.post('/', async ctx => {
   const body = ctx.request.body;
   let files = ctx.request.files;
   
-  console.log(files);
+  if (files['student-image'].constructor !== Array) files['student-image'] = [files['student-image']];
+  
   for (let file in files) {
     console.log(file);
     if (file === 'student-image') {
@@ -28,11 +29,6 @@ router.post('/', async ctx => {
     if (body[key].constructor !== Array) body[key] = [body[key]];
   });
 
-  ['student-image'].forEach(key => {
-    if (files[key].constructor !== Array) files[key] = [files[key]];
-  });
-
-  console.log(body);
   console.log(files);
 
   const data = {
@@ -60,7 +56,6 @@ router.post('/', async ctx => {
     }))
   }
 
-  console.log(data);
   ctx.set('Content-disposition', `attachment; filename=${data.book.title}.docx`)
   ctx.body = docxtemplater(data);
 });
