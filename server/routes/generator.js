@@ -11,10 +11,14 @@ router.get('/', async ctx => {
 router.post('/', async ctx => {
   const body = ctx.request.body;
   let files = ctx.request.files;
-
+  
+  console.log(files);
   for (let file in files) {
+    console.log(file);
     if (file === 'student-image') {
-      files[file] = files[file].map(f => f.path);
+      try {
+        files[file] = files[file].map(f => f.path);
+      } catch (e) { console.error(`Failed to replace file ${file} with its path`); console.error(e); }
     } else {
       files[file] = files[file].path;
     }
